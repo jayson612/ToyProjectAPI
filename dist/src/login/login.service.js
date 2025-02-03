@@ -17,10 +17,10 @@ let LoginService = class LoginService {
         this.prismaService = prismaService;
     }
     async login(loginDto) {
-        const { id, password } = loginDto;
+        const { userId, password } = loginDto;
         const user = await this.prismaService.user.findUnique({
             where: {
-                id: id,
+                id: userId,
                 password: password,
             },
         });

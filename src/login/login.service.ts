@@ -7,10 +7,10 @@ export class LoginService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async login(loginDto: LoginDto): Promise<{ success: boolean }> {
-    const { id, password } = loginDto;
+    const { userId, password } = loginDto;
     const user = await this.prismaService.user.findUnique({
       where: {
-        id: id,
+        userId: userId,
         password: password,
       },
     });

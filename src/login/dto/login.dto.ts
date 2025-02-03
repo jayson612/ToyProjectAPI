@@ -6,7 +6,7 @@ export class LoginDto {
     example: 'test',
     type: String,
   })
-  id: string;
+  userId: string;
 
   @ApiProperty({
     description: '비밀번호',

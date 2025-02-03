@@ -21,7 +21,7 @@ __decorate([
         type: String,
     }),
     __metadata("design:type", String)
-], LoginDto.prototype, "id", void 0);
+], LoginDto.prototype, "userId", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
         description: '비밀번호',
