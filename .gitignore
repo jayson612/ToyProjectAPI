@@ -1,6 +1,11 @@
-node_modules
-# Keep environment variables out of version control
-.env
-.DS_Store
-node_modules
+# Node.js dependencies
+node_modules/
+
+# Build output
 dist/
+
+# Environment variables
+.env
+
+# macOS system files
+.DS_Store
