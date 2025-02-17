@@ -1,7 +1,7 @@
-import { Bind } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
+import { PageQueryDto } from 'src/common/dto/query/page-query.dto';
 
-export class CreatePostResDto {
+export class GetPostPageResDto {
   @ApiProperty({
     description: '게시글 ID',
     example: 1,
@@ -43,4 +43,11 @@ export class CreatePostResDto {
     type: Date,
   })
   updatedAt: Date;
+
+  @ApiProperty({
+    example: '닉네임',
+    description: '작성자 닉네임',
+    type: String,
+  })
+  nickname: string;
 }
