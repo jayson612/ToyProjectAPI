@@ -8,12 +8,28 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(cuid())
+  id       BigInt @id @default(autoincrement())
   userId   String @unique @map("user_id")
   password String
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+  Post      Post[]
 
   @@map("user")
+}
+
+model Post {
+  id     BigInt @id @default(autoincrement())
+  userId BigInt @map("user_id")
+
+  title   String
+  content String
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  User User @relation(fields: [userId], references: [id])
+
+  @@map("post")
 }
