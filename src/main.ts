@@ -8,6 +8,12 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
 
+  app.enableCors({
+    origin: '*',
+    method: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  });
+
   const options = new DocumentBuilder()
     .setTitle('Toy Project API Docs')
     .setDescription('민붕이를 위한 API 설명서')
