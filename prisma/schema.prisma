@@ -8,7 +8,7 @@ datasource db {
 }
 
 model User {
-  id       BigInt @id @default(autoincrement())
+  id       String @id @default(cuid())
   userId   String @unique @map("user_id")
   password String
 
@@ -22,8 +22,8 @@ model User {
 }
 
 model Post {
-  id     BigInt @id @default(autoincrement())
-  userId BigInt @map("user_id")
+  id     BigInt @id @default(autoincrement()) @db.BigInt
+  userId String @map("user_id")
 
   title   String
   content String

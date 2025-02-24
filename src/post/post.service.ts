@@ -34,12 +34,12 @@ export class PostService {
         },
       },
       orderBy: { createdAt: Prisma.SortOrder.desc },
-      skip: (page - 1) * pageSize,
-      take: pageSize,
+      skip: (+page - 1) * +pageSize,
+      take: +pageSize,
     });
     const data = posts.map((post) => {
       return {
-        id: post.id,
+        id: post.id.toString(),
         userId: post.userId,
         title: post.title,
         content: post.content,
@@ -49,7 +49,7 @@ export class PostService {
       };
     });
     const totalCount = await this.prismaService.post.count();
-    return { data: data, page: page, totalCount: totalCount };
+    return { data: data, page: +page, totalCount: totalCount };
   }
 
   async getPost(id: number): Promise<GetPostPageResDto> {
@@ -64,7 +64,7 @@ export class PostService {
       },
     });
     return {
-      id: post.id,
+      id: post.id.toString(),
       userId: post.userId,
       title: post.title,
       content: post.content,
