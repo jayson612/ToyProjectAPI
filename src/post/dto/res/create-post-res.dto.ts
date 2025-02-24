@@ -7,14 +7,14 @@ export class CreatePostResDto {
     example: 1,
     type: BigInt,
   })
-  id: BigInt;
+  id: bigint;
 
   @ApiProperty({
     description: '작성자 ID',
     example: 1,
-    type: BigInt,
+    type: String,
   })
-  userId: BigInt;
+  userId: string;
 
   @ApiProperty({
     description: '제목',

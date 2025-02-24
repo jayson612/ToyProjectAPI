@@ -1,20 +1,22 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { PageQueryDto } from 'src/common/dto/query/page-query.dto';
+import { IsNumber, IsString } from 'class-validator';
 
 export class GetPostPageResDto {
   @ApiProperty({
     description: '게시글 ID',
     example: 1,
-    type: BigInt,
+    type: String,
   })
-  id: BigInt;
+  @IsString()
+  id: string;
 
   @ApiProperty({
     description: '작성자 ID',
     example: 1,
-    type: BigInt,
+    type: String,
   })
-  userId: BigInt;
+  @IsNumber()
+  userId: string;
 
   @ApiProperty({
     description: '제목',
