@@ -62,7 +62,9 @@ export class PostService {
         nickname: post.User.nickname,
       };
     });
-    const totalCount = await this.prismaService.post.count();
+    const totalCount = await this.prismaService.post.count({
+      where: postWhereInput,
+    });
     return { data: data, page: +page, totalCount: totalCount };
   }
 
