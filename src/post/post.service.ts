@@ -18,7 +18,10 @@ export class PostService {
     const newPost = await this.prismaService.post.create({
       data: { userId: userId, title: title, content: content },
     });
-    return newPost;
+    return {
+      ...newPost,
+      id: newPost.id.toString(),
+    };
   }
 
   async getAllPosts(

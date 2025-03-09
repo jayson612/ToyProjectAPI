@@ -5,9 +5,9 @@ export class CreatePostResDto {
   @ApiProperty({
     description: '게시글 ID',
     example: 1,
-    type: BigInt,
+    type: String,
   })
-  id: bigint;
+  id: string;
 
   @ApiProperty({
     description: '작성자 ID',
