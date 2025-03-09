@@ -27,8 +27,19 @@ export class PostService {
   async getAllPosts(
     query: GetPostPageQueryDto,
   ): Promise<PaginationResDto<GetPostPageResDto>> {
-    const { page, pageSize } = query;
+    const { page, pageSize, title, content, userId } = query;
+    const postWhereInput: Prisma.PostWhereInput = {};
+    if (title) {
+      postWhereInput.title = { contains: title, mode: 'insensitive' };
+    }
+    if (content) {
+      postWhereInput.content = { contains: content, mode: 'insensitive' };
+    }
+    if (userId) {
+      postWhereInput.userId = userId;
+    }
     const posts = await this.prismaService.post.findMany({
+      where: postWhereInput,
       include: {
         User: {
           select: {
